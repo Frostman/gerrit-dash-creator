@@ -1,0 +1,16 @@
+<details>
+    <summary><a href="{{ url }}">{{ title }}</a></summary>
+    {% if description %}
+    <h3>Description:</h3>
+    <p>{{ description }}</p>
+    {%- endif %}
+
+    {% if configuration %}
+    <h3>Configuration:</h3>
+    <pre>
+    {% for line in configuration.splitlines() %}
+        {{ line }}
+    {%- endfor %}
+    </pre>
+    {% endif %}
+</details>

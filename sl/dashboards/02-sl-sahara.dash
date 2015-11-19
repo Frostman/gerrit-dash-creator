@@ -1,0 +1,57 @@
+[dashboard]
+title = SL's Sahara Review Inbox
+description = Review Inbox
+foreach = sahara status:open
+
+[section "Approved, not yet merged, w/o my code review"]
+query = -label:Verified<=-1,jenkins
+        -label:Code-Review>=-2,self
+        label:Workflow>=1 -label:Workflow<=-1
+
+[section "Approved, check or gate failed"]
+query = label:Verified<=-1,jenkins
+        -label:Code-Review<=-2
+        label:Workflow>=1 -label:Workflow<=-1
+
+[section "Needs final +2, Jenkins and Sahara CI PASSED"]
+query =  -owner:self
+         -label:Code-Review>=-2,self label:Code-Review>=2
+         -label:Workflow<=-1
+        (((project:openstack/sahara OR project:openstack/sahara-image-elements OR project:openstack/python-saharaclient)
+            label:Verified>=1,jenkins label:Verified>=1,elastic-hadoop-ci) OR
+        (-(project:openstack/sahara OR project:openstack/sahara-image-elements OR project:openstack/python-saharaclient)
+            label:Verified>=1,jenkins))
+
+[section "Open starred changes"]
+query = is:starred
+
+[section "Needs final +2, Jenkins or Sahara CI NOT PASSED"]
+query = -owner:self
+        (label:Verified<=-1,jenkins OR label:Verified<=-1,elastic-hadoop-ci)
+        -label:Code-Review>=-2,self label:Code-Review>=2
+        -label:Workflow<=-1
+
+[section "Needs Feedback (Changes older than 5 days that have NOT been reviewed by anyone)"]
+query = -owner:self
+        -label:Code-Review<=2
+        -label:Workflow<=-1
+        age:5d
+
+[section "Jenkins and Sahara CI PASSED, no negative feedback, no Code Review +2 (limit:10)"]
+query = -owner:self
+        -label:Code-Review>=2 -label:Code-Review<=-1
+        -label:Workflow<=-1
+        limit:10
+        (((project:openstack/sahara OR project:openstack/sahara-image-elements OR project:openstack/python-saharaclient)
+            label:Verified>=1,jenkins label:Verified>=1,elastic-hadoop-ci) OR
+        (-(project:openstack/sahara OR project:openstack/sahara-image-elements OR project:openstack/python-saharaclient)
+            label:Verified>=1,jenkins))
+
+[section "Other Changes on review, w/o my code review (limit:10)"]
+query = -owner:self
+        -label:Code-Review>=-2,self
+        -label:Workflow<=-1
+        limit:10
+
+[section "All open changes"]
+query =

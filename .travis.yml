@@ -1,0 +1,19 @@
+language: python
+branches:
+    only:
+        - master
+before_install:
+    - openssl aes-256-cbc -K $encrypted_d5969ddd960e_key -iv $encrypted_d5969ddd960e_iv
+      -in sl/tools/publish-key.enc -out ~/.ssh/publish-key -d
+    - chmod u=rw,og= ~/.ssh/publish-key
+    - ssh-keygen -y -f ~/.ssh/publish-key
+    - echo "Host github.com" >> ~/.ssh/config
+    - echo "  IdentityFile ~/.ssh/publish-key" >> ~/.ssh/config
+    - git remote set-url origin git@github.com:Frostman/gerrit-dash-creator.git
+    - git fetch origin -f gh-pages:gh-pages
+    - git config user.email slukjanov@mirantis.com
+    - git config user.name "Sergey Lukjanov"
+    - pip install ghp-import
+script:
+    - sl/tools/generate_sl_dashboards.sh
+    - sl/tools/publish_gh_pages.sh

@@ -1,0 +1,16 @@
+[dashboard]
+title = SL's Fast Review Inbox
+description = Review Inbox
+foreach = status:open NOT owner:self label:Verified>=1,jenkins
+
+[section "Approved, not yet merged, w/o my code review"]
+query = (sahara OR project-config OR release) NOT puppet NOT label:Code-Review>=-2,self label:Workflow>=1 NOT label:Workflow<=-1 NOT label:Verified<=-1,jenkins
+
+[section "Approved, check or gate failed"]
+query = (sahara OR project-config OR release) NOT puppet label:Workflow>=1 label:Verified<=-1,jenkins NOT label:Workflow<=-1
+
+[section "Needs final +2, CI passed"]
+query =  NOT label:Code-Review>=-2,self label:Code-Review>=2 label:Verified>=1,jenkins label:Verified>=1,elastic-hadoop-ci NOT label:Workflow<=-1
+
+[section "Needs final +2, CI not passed"]
+query = NOT label:Code-Review>=-2,self label:Code-Review>=2 (label:Verified<=-1,jenkins OR label:Verified<=-1,elastic-hadoop-ci) NOT label:Workflow<=-1
