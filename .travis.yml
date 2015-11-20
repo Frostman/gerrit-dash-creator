@@ -17,3 +17,6 @@ before_install:
 script:
     - sl/tools/generate_sl_dashboards.sh
     - sl/tools/publish_gh_pages.sh
+notifications:
+    email:
+        - slukjanov@mirantis.com
