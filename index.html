@@ -30,51 +30,6 @@
     
 </details>
 <details>
-    <summary><a href="https://review.openstack.org/#/dashboard/?foreach=%28infra+OR+release%29+status%3Aopen+NOT+owner%3Aself&title=SL%27s+Infra%2FRelease+Review+Inbox&Approved%2C+not+yet+merged%2C+w%2Fo+my+code+review=NOT+label%3ACode%2DReview%3E%3D%2D2%2Cself+label%3AWorkflow%3E%3D1+NOT+label%3AWorkflow%3C%3D%2D1+NOT+label%3AVerified%3C%3D%2D1%2Cjenkins&Approved%2C+check+or+gate+failed=label%3AWorkflow%3E%3D1+label%3AVerified%3C%3D%2D1%2Cjenkins+NOT+label%3AWorkflow%3C%3D%2D1&Needs+final+%2B2%2C+CI+passed=NOT+label%3ACode%2DReview%3E%3D%2D2%2Cself+label%3ACode%2DReview%3E%3D2+label%3AVerified%3E%3D1%2Cjenkins+NOT+label%3AWorkflow%3C%3D%2D1&Needs+final+%2B2%2C+CI+not+passed=NOT+label%3ACode%2DReview%3E%3D%2D2%2Cself+label%3ACode%2DReview%3E%3D2+label%3AVerified%3C%3D%2D1%2Cjenkins+NOT+label%3AWorkflow%3C%3D%2D1&Needs+Feedback+%28Changes+older+than+5+days+that+have+not+been+reviewed+by+anyone%29=NOT+label%3ACode%2DReview%3C%3D2+age%3A5d+NOT+label%3AWorkflow%3C%3D%2D1&Passed+Jenkins%2C+No+Negative+Feedback%2C+no+Code+Review+%2B2+%28limit%3A15%29=label%3AVerified%3E%3D1%2Cjenkins+NOT+label%3ACode%2DReview%3E%3D2+NOT+label%3ACode%2DReview%3C%3D%2D1+NOT+label%3AWorkflow%3C%3D%2D1+limit%3A15&Wayward+Changes+%28Changes+with+no+code+review+in+the+last+1+days%29=NOT+label%3ACode%2DReview%3C%3D2+age%3A1d+NOT+label%3AWorkflow%3C%3D%2D1&Other+Changes+on+review%2C+w%2Fo+my+code+review+%28limit%3A10%29=NOT+label%3ACode%2DReview%3E%3D%2D2%2Cself+NOT+label%3AWorkflow%3C%3D%2D1+limit%3A10&Work+in+progress+Changes+on+review%2C+w%2Fo+my+code+review+%28limit%3A5%29=NOT+label%3ACode%2DReview%3E%3D%2D2%2Cself+label%3AWorkflow%3C%3D%2D1+limit%3A5">SL's Infra/Release Review Inbox</a></summary>
-    
-    <h3>Description:</h3>
-    <p>Review Inbox</p>
-
-    
-    <h3>Configuration:</h3>
-    <pre>
-    
-        [dashboard]
-        title = SL's Infra/Release Review Inbox
-        description = Review Inbox
-        foreach = (infra OR release) status:open NOT owner:self
-        
-        [section "Approved, not yet merged, w/o my code review"]
-        query = NOT label:Code-Review>=-2,self label:Workflow>=1 NOT label:Workflow<=-1 NOT label:Verified<=-1,jenkins
-        
-        [section "Approved, check or gate failed"]
-        query = label:Workflow>=1 label:Verified<=-1,jenkins NOT label:Workflow<=-1
-        
-        [section "Needs final +2, CI passed"]
-        query = NOT label:Code-Review>=-2,self label:Code-Review>=2 label:Verified>=1,jenkins NOT label:Workflow<=-1
-        
-        [section "Needs final +2, CI not passed"]
-        query = NOT label:Code-Review>=-2,self label:Code-Review>=2 label:Verified<=-1,jenkins NOT label:Workflow<=-1
-        
-        [section "Needs Feedback (Changes older than 5 days that have not been reviewed by anyone)"]
-        query = NOT label:Code-Review<=2 age:5d NOT label:Workflow<=-1
-        
-        [section "Passed Jenkins, No Negative Feedback, no Code Review +2 (limit:15)"]
-        query = label:Verified>=1,jenkins NOT label:Code-Review>=2 NOT label:Code-Review<=-1 NOT label:Workflow<=-1 limit:15
-        
-        [section "Wayward Changes (Changes with no code review in the last 1 days)"]
-        query = NOT label:Code-Review<=2 age:1d NOT label:Workflow<=-1
-        
-        [section "Other Changes on review, w/o my code review (limit:10)"]
-        query = NOT label:Code-Review>=-2,self NOT label:Workflow<=-1 limit:10
-        
-        [section "Work in progress Changes on review, w/o my code review (limit:5)"]
-        query = NOT label:Code-Review>=-2,self label:Workflow<=-1 limit:5
-        
-    </pre>
-    
-</details>
-<details>
     <summary><a href="https://review.openstack.org/#/dashboard/?foreach=sahara+status%3Aopen&title=SL%27s+Sahara+Review+Inbox&Approved%2C+not+yet+merged%2C+w%2Fo+my+code+review=%2Dlabel%3AVerified%3C%3D%2D1%2Cjenkins%0A%2Dlabel%3ACode%2DReview%3E%3D%2D2%2Cself%0Alabel%3AWorkflow%3E%3D1+%2Dlabel%3AWorkflow%3C%3D%2D1&Approved%2C+check+or+gate+failed=label%3AVerified%3C%3D%2D1%2Cjenkins%0A%2Dlabel%3ACode%2DReview%3C%3D%2D2%0Alabel%3AWorkflow%3E%3D1+%2Dlabel%3AWorkflow%3C%3D%2D1&Needs+final+%2B2%2C+Jenkins+and+Sahara+CI+PASSED=%2Downer%3Aself%0A%2Dlabel%3ACode%2DReview%3E%3D%2D2%2Cself+label%3ACode%2DReview%3E%3D2%0A%2Dlabel%3AWorkflow%3C%3D%2D1%0A%28%28%28project%3Aopenstack%2Fsahara+OR+project%3Aopenstack%2Fsahara%2Dimage%2Delements+OR+project%3Aopenstack%2Fpython%2Dsaharaclient%29%0Alabel%3AVerified%3E%3D1%2Cjenkins+label%3AVerified%3E%3D1%2Celastic%2Dhadoop%2Dci%29+OR%0A%28%2D%28project%3Aopenstack%2Fsahara+OR+project%3Aopenstack%2Fsahara%2Dimage%2Delements+OR+project%3Aopenstack%2Fpython%2Dsaharaclient%29%0Alabel%3AVerified%3E%3D1%2Cjenkins%29%29&Open+starred+changes=is%3Astarred&Needs+final+%2B2%2C+Jenkins+or+Sahara+CI+NOT+PASSED=%2Downer%3Aself%0A%28label%3AVerified%3C%3D%2D1%2Cjenkins+OR+label%3AVerified%3C%3D%2D1%2Celastic%2Dhadoop%2Dci%29%0A%2Dlabel%3ACode%2DReview%3E%3D%2D2%2Cself+label%3ACode%2DReview%3E%3D2%0A%2Dlabel%3AWorkflow%3C%3D%2D1&Needs+Feedback+%28Changes+older+than+5+days+that+have+NOT+been+reviewed+by+anyone%29=%2Downer%3Aself%0A%2Dlabel%3ACode%2DReview%3C%3D2%0A%2Dlabel%3AWorkflow%3C%3D%2D1%0Aage%3A5d&Jenkins+and+Sahara+CI+PASSED%2C+no+negative+feedback%2C+no+Code+Review+%2B2+%28limit%3A10%29=%2Downer%3Aself%0A%2Dlabel%3ACode%2DReview%3E%3D2+%2Dlabel%3ACode%2DReview%3C%3D%2D1%0A%2Dlabel%3AWorkflow%3C%3D%2D1%0Alimit%3A10%0A%28%28%28project%3Aopenstack%2Fsahara+OR+project%3Aopenstack%2Fsahara%2Dimage%2Delements+OR+project%3Aopenstack%2Fpython%2Dsaharaclient%29%0Alabel%3AVerified%3E%3D1%2Cjenkins+label%3AVerified%3E%3D1%2Celastic%2Dhadoop%2Dci%29+OR%0A%28%2D%28project%3Aopenstack%2Fsahara+OR+project%3Aopenstack%2Fsahara%2Dimage%2Delements+OR+project%3Aopenstack%2Fpython%2Dsaharaclient%29%0Alabel%3AVerified%3E%3D1%2Cjenkins%29%29&Other+Changes+on+review%2C+w%2Fo+my+code+review+%28limit%3A10%29=%2Downer%3Aself%0A%2Dlabel%3ACode%2DReview%3E%3D%2D2%2Cself%0A%2Dlabel%3AWorkflow%3C%3D%2D1%0Alimit%3A10&All+open+changes=">SL's Sahara Review Inbox</a></summary>
     
     <h3>Description:</h3>
@@ -141,6 +96,51 @@
         
         [section "All open changes"]
         query = 
+        
+    </pre>
+    
+</details>
+<details>
+    <summary><a href="https://review.openstack.org/#/dashboard/?foreach=%28infra+OR+release%29+status%3Aopen+NOT+owner%3Aself&title=SL%27s+Infra%2FRelease+Review+Inbox&Approved%2C+not+yet+merged%2C+w%2Fo+my+code+review=NOT+label%3ACode%2DReview%3E%3D%2D2%2Cself+label%3AWorkflow%3E%3D1+NOT+label%3AWorkflow%3C%3D%2D1+NOT+label%3AVerified%3C%3D%2D1%2Cjenkins&Approved%2C+check+or+gate+failed=label%3AWorkflow%3E%3D1+label%3AVerified%3C%3D%2D1%2Cjenkins+NOT+label%3AWorkflow%3C%3D%2D1&Needs+final+%2B2%2C+CI+passed=NOT+label%3ACode%2DReview%3E%3D%2D2%2Cself+label%3ACode%2DReview%3E%3D2+label%3AVerified%3E%3D1%2Cjenkins+NOT+label%3AWorkflow%3C%3D%2D1&Needs+final+%2B2%2C+CI+not+passed=NOT+label%3ACode%2DReview%3E%3D%2D2%2Cself+label%3ACode%2DReview%3E%3D2+label%3AVerified%3C%3D%2D1%2Cjenkins+NOT+label%3AWorkflow%3C%3D%2D1&Needs+Feedback+%28Changes+older+than+5+days+that+have+not+been+reviewed+by+anyone%29=NOT+label%3ACode%2DReview%3C%3D2+age%3A5d+NOT+label%3AWorkflow%3C%3D%2D1&Passed+Jenkins%2C+No+Negative+Feedback%2C+no+Code+Review+%2B2+%28limit%3A15%29=label%3AVerified%3E%3D1%2Cjenkins+NOT+label%3ACode%2DReview%3E%3D2+NOT+label%3ACode%2DReview%3C%3D%2D1+NOT+label%3AWorkflow%3C%3D%2D1+limit%3A15&Wayward+Changes+%28Changes+with+no+code+review+in+the+last+1+days%29=NOT+label%3ACode%2DReview%3C%3D2+age%3A1d+NOT+label%3AWorkflow%3C%3D%2D1&Other+Changes+on+review%2C+w%2Fo+my+code+review+%28limit%3A10%29=NOT+label%3ACode%2DReview%3E%3D%2D2%2Cself+NOT+label%3AWorkflow%3C%3D%2D1+limit%3A10&Work+in+progress+Changes+on+review%2C+w%2Fo+my+code+review+%28limit%3A5%29=NOT+label%3ACode%2DReview%3E%3D%2D2%2Cself+label%3AWorkflow%3C%3D%2D1+limit%3A5">SL's Infra/Release Review Inbox</a></summary>
+    
+    <h3>Description:</h3>
+    <p>Review Inbox</p>
+
+    
+    <h3>Configuration:</h3>
+    <pre>
+    
+        [dashboard]
+        title = SL's Infra/Release Review Inbox
+        description = Review Inbox
+        foreach = (infra OR release) status:open NOT owner:self
+        
+        [section "Approved, not yet merged, w/o my code review"]
+        query = NOT label:Code-Review>=-2,self label:Workflow>=1 NOT label:Workflow<=-1 NOT label:Verified<=-1,jenkins
+        
+        [section "Approved, check or gate failed"]
+        query = label:Workflow>=1 label:Verified<=-1,jenkins NOT label:Workflow<=-1
+        
+        [section "Needs final +2, CI passed"]
+        query = NOT label:Code-Review>=-2,self label:Code-Review>=2 label:Verified>=1,jenkins NOT label:Workflow<=-1
+        
+        [section "Needs final +2, CI not passed"]
+        query = NOT label:Code-Review>=-2,self label:Code-Review>=2 label:Verified<=-1,jenkins NOT label:Workflow<=-1
+        
+        [section "Needs Feedback (Changes older than 5 days that have not been reviewed by anyone)"]
+        query = NOT label:Code-Review<=2 age:5d NOT label:Workflow<=-1
+        
+        [section "Passed Jenkins, No Negative Feedback, no Code Review +2 (limit:15)"]
+        query = label:Verified>=1,jenkins NOT label:Code-Review>=2 NOT label:Code-Review<=-1 NOT label:Workflow<=-1 limit:15
+        
+        [section "Wayward Changes (Changes with no code review in the last 1 days)"]
+        query = NOT label:Code-Review<=2 age:1d NOT label:Workflow<=-1
+        
+        [section "Other Changes on review, w/o my code review (limit:10)"]
+        query = NOT label:Code-Review>=-2,self NOT label:Workflow<=-1 limit:10
+        
+        [section "Work in progress Changes on review, w/o my code review (limit:5)"]
+        query = NOT label:Code-Review>=-2,self label:Workflow<=-1 limit:5
         
     </pre>
     
