@@ -145,3 +145,74 @@
     </pre>
     
 </details>
+<details>
+    <summary><a href="https://review.openstack.org/#/dashboard/?foreach=ccp+status%3Aopen&title=SL%27s+Fuel+CCP+Review+Inbox&Approved%2C+not+yet+merged%2C+w%2Fo+my+code+review=%2Dlabel%3AVerified%3C%3D%2D1%2Cjenkins%0A%2Dlabel%3ACode%2DReview%3E%3D%2D2%2Cself%0Alabel%3AWorkflow%3E%3D1+%2Dlabel%3AWorkflow%3C%3D%2D1&Approved%2C+check+or+gate+failed=label%3AVerified%3C%3D%2D1%2Cjenkins%0A%2Dlabel%3ACode%2DReview%3C%3D%2D2%0Alabel%3AWorkflow%3E%3D1+%2Dlabel%3AWorkflow%3C%3D%2D1&Needs+final+%2B2%2C+Jenkins+and+CCP+CI+PASSED=%2Downer%3Aself%0A%2Dlabel%3ACode%2DReview%3E%3D%2D2%2Cself+label%3ACode%2DReview%3E%3D2%0A%2Dlabel%3AWorkflow%3C%3D%2D1%0A%28%28%28project%3Aopenstack%2Ffuel%2Dccp%29%0Alabel%3AVerified%3E%3D1%2Cjenkins+label%3AVerified%3E%3D1%2Cmirantis%2Dfuel%2Dccp%2Dci%29+OR%0A%28%2D%28project%3Aopenstack%2Ffuel%2Dccp%29%0Alabel%3AVerified%3E%3D1%2Cjenkins%29%29&Open+starred+changes=is%3Astarred&Needs+final+%2B2%2C+Jenkins+or+CCP+CI+NOT+PASSED=%2Downer%3Aself%0A%28label%3AVerified%3C%3D%2D1%2Cjenkins+OR+label%3AVerified%3C%3D%2D1%2Cmirantis%2Dfuel%2Dccp%2Dci%29%0A%2Dlabel%3ACode%2DReview%3E%3D%2D2%2Cself+label%3ACode%2DReview%3E%3D2%0A%2Dlabel%3AWorkflow%3C%3D%2D1&Needs+Feedback+%28Changes+older+than+5+days+that+have+NOT+been+reviewed+by+anyone%29=%2Downer%3Aself%0A%2Dlabel%3ACode%2DReview%3C%3D2%0A%2Dlabel%3AWorkflow%3C%3D%2D1%0Aage%3A5d&Jenkins+and+CCP+CI+PASSED%2C+no+negative+feedback%2C+no+Code+Review+%2B2+%28limit%3A10%29=%2Downer%3Aself%0A%2Dlabel%3ACode%2DReview%3E%3D2+%2Dlabel%3ACode%2DReview%3C%3D%2D1%0A%2Dlabel%3AWorkflow%3C%3D%2D1%0Alimit%3A10%0A%28%28%28project%3Aopenstack%2Ffuel%2Dccp%29%0Alabel%3AVerified%3E%3D1%2Cjenkins+label%3AVerified%3E%3D1%2Cmirantis%2Dfuel%2Dccp%2Dci%29+OR%0A%28%2D%28project%3Aopenstack%2Ffuel%2Dccp%29%0Alabel%3AVerified%3E%3D1%2Cjenkins%29%29&Other+Changes+on+review%2C+w%2Fo+my+code+review+%28limit%3A10%29=%2Downer%3Aself%0A%2Dlabel%3ACode%2DReview%3E%3D%2D2%2Cself%0A%2Dlabel%3AWorkflow%3C%3D%2D1%0Alimit%3A10&All+open+changes=">SL's Fuel CCP Review Inbox</a></summary>
+    
+    <h3>Description:</h3>
+    <p>Review Inbox</p>
+
+    
+    <h3>Configuration:</h3>
+    <pre>
+    
+        [dashboard]
+        title = SL's Fuel CCP Review Inbox
+        description = Review Inbox
+        foreach = ccp status:open
+        
+        [section "Approved, not yet merged, w/o my code review"]
+        query = -label:Verified<=-1,jenkins
+        	-label:Code-Review>=-2,self
+        	label:Workflow>=1 -label:Workflow<=-1
+        
+        [section "Approved, check or gate failed"]
+        query = label:Verified<=-1,jenkins
+        	-label:Code-Review<=-2
+        	label:Workflow>=1 -label:Workflow<=-1
+        
+        [section "Needs final +2, Jenkins and CCP CI PASSED"]
+        query = -owner:self
+        	-label:Code-Review>=-2,self label:Code-Review>=2
+        	-label:Workflow<=-1
+        	(((project:openstack/fuel-ccp)
+        	label:Verified>=1,jenkins label:Verified>=1,mirantis-fuel-ccp-ci) OR
+        	(-(project:openstack/fuel-ccp)
+        	label:Verified>=1,jenkins))
+        
+        [section "Open starred changes"]
+        query = is:starred
+        
+        [section "Needs final +2, Jenkins or CCP CI NOT PASSED"]
+        query = -owner:self
+        	(label:Verified<=-1,jenkins OR label:Verified<=-1,mirantis-fuel-ccp-ci)
+        	-label:Code-Review>=-2,self label:Code-Review>=2
+        	-label:Workflow<=-1
+        
+        [section "Needs Feedback (Changes older than 5 days that have NOT been reviewed by anyone)"]
+        query = -owner:self
+        	-label:Code-Review<=2
+        	-label:Workflow<=-1
+        	age:5d
+        
+        [section "Jenkins and CCP CI PASSED, no negative feedback, no Code Review +2 (limit:10)"]
+        query = -owner:self
+        	-label:Code-Review>=2 -label:Code-Review<=-1
+        	-label:Workflow<=-1
+        	limit:10
+        	(((project:openstack/fuel-ccp)
+        	label:Verified>=1,jenkins label:Verified>=1,mirantis-fuel-ccp-ci) OR
+        	(-(project:openstack/fuel-ccp)
+        	label:Verified>=1,jenkins))
+        
+        [section "Other Changes on review, w/o my code review (limit:10)"]
+        query = -owner:self
+        	-label:Code-Review>=-2,self
+        	-label:Workflow<=-1
+        	limit:10
+        
+        [section "All open changes"]
+        query = 
+        
+    </pre>
+    
+</details>
