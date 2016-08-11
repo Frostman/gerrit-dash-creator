@@ -1,7 +1,7 @@
 [dashboard]
 title = SL's Fuel CCP Review Inbox
 description = Review Inbox
-foreach = ccp status:open
+foreach = project:^openstack/fuel-ccp.* status:open
 
 [section "Approved, not yet merged, w/o my code review"]
 query = -label:Verified<=-1,jenkins
